@@ -1,5 +1,5 @@
 {
-    "name": "symfony/dom-crawler",
+    "name": "foremtehan/dom-crawler",
     "type": "library",
     "description": "Eases DOM navigation for HTML and XML documents",
     "keywords": [],
