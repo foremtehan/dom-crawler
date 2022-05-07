@@ -1275,6 +1275,8 @@ class Crawler implements \Countable, \IteratorAggregate
         $crawler->namespaces = $this->namespaces;
         $crawler->cachedNamespaces = $this->cachedNamespaces;
         $crawler->html5Parser = $this->html5Parser;
+        $crawler->nullResult = $this->nullResult;
+        $crawler->cssSelector = $this->cssSelector;
 
         return $crawler;
     }
