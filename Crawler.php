@@ -78,12 +78,9 @@ class Crawler implements \Countable, \IteratorAggregate
      */
     private $html5Parser;
 
-    /**
-     * Determine if we should return null when node not exists
-     *
-     * @var bool
-     */
     public $nullResult = true;
+
+    public $cssSelector;
 
     /**
      * @param \DOMNodeList|\DOMNode|\DOMNode[]|string|null $node A Node to use as the base for the crawling
@@ -96,6 +93,16 @@ class Crawler implements \Countable, \IteratorAggregate
         $this->cachedNamespaces = new \ArrayObject();
 
         $this->add($node);
+    }
+
+    public function getCssSelector()
+    {
+        return $this->cssSelector;
+    }
+
+    public function setCssSelector($cssSelector): void
+    {
+        $this->cssSelector = $cssSelector;
     }
 
     /**
@@ -789,9 +796,10 @@ class Crawler implements \Countable, \IteratorAggregate
      */
     public function filter(string $selector)
     {
+        $this->setCssSelector($selector);
+
         $converter = $this->createCssSelectorConverter();
 
-        // The CssSelector already prefixes the selector with descendant-or-self::
         return $this->filterRelativeXPath($converter->toXPath($selector));
     }
 
@@ -1320,6 +1328,6 @@ class Crawler implements \Countable, \IteratorAggregate
             return null;
         }
 
-        throw new \InvalidArgumentException('The current node list is empty.');
+        throw new \InvalidArgumentException("The current node list is empty for: {$this->getCssSelector()}");
     }
 }
