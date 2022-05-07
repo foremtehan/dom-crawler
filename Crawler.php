@@ -78,7 +78,7 @@ class Crawler implements \Countable, \IteratorAggregate
      */
     private $html5Parser;
 
-    public $nullResult = true;
+    public $nullResult;
 
     public $cssSelector;
 
@@ -794,8 +794,10 @@ class Crawler implements \Countable, \IteratorAggregate
      *
      * @throws \RuntimeException if the CssSelector Component is not available
      */
-    public function filter(string $selector)
+    public function filter(string $selector, bool $nullResult = true)
     {
+        $this->nullResult = $nullResult;
+
         $this->setCssSelector($selector);
 
         $converter = $this->createCssSelectorConverter();
