@@ -21,7 +21,7 @@
         "symfony/polyfill-ctype": "~1.8",
         "symfony/polyfill-mbstring": "~1.0",
         "symfony/polyfill-php80": "^1.16",
-        "symfony/css-selector": "^5.0|^6.0"
+        "symfony/css-selector": "^5.0|6.0.3"
     },
     "require-dev": {
         "masterminds/html5": "^2.6"
